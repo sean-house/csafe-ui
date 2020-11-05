@@ -2,3 +2,27 @@
   padding-top: $spacing-05;
   padding-bottom: $spacing-05;
 }
+
+.safeholder-page__banner {
+  padding-top: $spacing-05;
+  padding-bottom: $spacing-07 * 2;
+  @include landing-page-background;
+}
+
+.safeholder-page__heading {
+  @include carbon--type-style('productive-heading-05');
+}
+
+
+.safeholder-page__r2 {
+  margin-top: rem(-40px);
+}
+
+.safeholder-page__c2 {
+  @include landing-page-background;
+}
+
+.safeholder-page__tab-content {
+  padding-top: $layout-05;
+  padding-bottom: $layout-05;
+}

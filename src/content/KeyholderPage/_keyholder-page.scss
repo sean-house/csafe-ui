@@ -2,3 +2,23 @@
   padding-top: $spacing-05;
   padding-bottom: $spacing-05;
 }
+
+.keyholder-page__banner {
+  padding-top: $spacing-05;
+  padding-bottom: $spacing-07 * 2;
+  @include landing-page-background;
+}
+
+.keyholder-page__heading {
+  @include carbon--type-style('productive-heading-05');
+}
+
+
+.keyholder-page__r2 {
+  margin-top: rem(-40px);
+}
+
+.keyholder-page__tab-content {
+  padding-top: $layout-05;
+  padding-bottom: $layout-05;
+}
