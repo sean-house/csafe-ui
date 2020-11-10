@@ -1,17 +1,12 @@
 import { combineReducers } from 'redux';
+import safeListReducer from './safeListReducer';
+import refreshReducer from './refreshReducer'
 // import { reducer as formReducer} from 'redux-form';
 
-const INITIAL_STATE = {
-    isSignedIn: null,
-    jwt_token: null,
-    refresh_token: null
-};
 
 export default combineReducers({
-    dummy: (state = INITIAL_STATE ) => {
-        return state;
-    }
-    //auth: authReducer,
+    currentUser: refreshReducer,
+    safeList: safeListReducer
     //form: formReducer,
     //streams: streamReducer
 });

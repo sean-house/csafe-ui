@@ -3,6 +3,7 @@ import {
   Breadcrumb,
   BreadcrumbItem
 } from 'carbon-components-react';
+import SafeList from '../../components/SafeList';
 
 const SafeholderPage = () => {
   return (
@@ -24,18 +25,13 @@ const SafeholderPage = () => {
               <div className="bx--grid bx--grid--no-gutter bx--grid--full-width">
                 <div className="bx--row safeholder-page__tab-content">
                   <div className="bx--col-md-4 bx--col-lg-7">
-                    <h2 className="landing-page__subheading">
-                      Your safes
-                    </h2>
-                    <p className="landing-page__p">
-                      Safe summary list
-                    </p>
+                    <SafeList />
                   </div>
-                  <div className="bx--col-md-4 bx--offset-lg-1 bx--col-lg-8 safeholder-page__c2">
-                    <h2 className="landing-page__subheading">
+                  <div className="bx--col-md-4 bx--offset-lg-1 bx--col-lg-8">
+                    <h2 className="safeholder-page__subheading">
                       Selected safe details
                     </h2>
-                    <p className="landing-page__p">
+                    <p className="safeholder-page__p safeholder-page__c2">
                       Safe details and messages
                     </p>
                   </div>
