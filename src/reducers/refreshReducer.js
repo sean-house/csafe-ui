@@ -9,9 +9,9 @@ const INITIAL_STATE = {
 };
 
 const refreshReducer = (state = INITIAL_STATE, action) => {
-    console.log("In reducer")
-    console.log(state)
-    console.log(action)
+    //console.log("In reducer")
+    //console.log(state)
+    //console.log(action)
     switch (action.type) {
         case REFRESH:
             return { ...state, 
