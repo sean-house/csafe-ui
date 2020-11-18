@@ -7,7 +7,6 @@ import {
 
 
 const LoginModal = (props) => {
-  console.log(props)
       return ReactDOM.createPortal(
             <Modal
               open={props.open}

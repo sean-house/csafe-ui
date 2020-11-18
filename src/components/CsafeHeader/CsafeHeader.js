@@ -16,6 +16,8 @@ import {
 import { Link } from 'react-router-dom';
 import UserAvatar20 from '@carbon/icons-react/lib/user--avatar/20';
 import LoginModal from '../LoginModal/LoginModal';
+import { loginUser } from '../../actions';
+
 
 
 class CsafeHeader extends Component {
@@ -23,31 +25,57 @@ class CsafeHeader extends Component {
           modalHeading: "Login....",
           primaryButtonText: "Login",
           secondaryButtonText: "Cancel",
-          onRequestSubmit: () => {this.toggle_login_modal()},
+          onRequestSubmit: () => {this.handleModalSubmit()},
           onRequestClose: () => {this.toggle_login_modal()},
           onSecondarySubmit: () => {this.toggle_login_modal()},
           selectorPrimaryFocus: ".bx--text-input",
           pwType: "password",
-          content: <modalContent>
+          userId: "",
+          password: "",
+          content: <>
             <TextInput
+              required
+              onChange={(e) => this.handleUserIDChange(e)} 
               id="text-input-1"
               labelText="UserID"
-              placeholder="Enter text..."
+              placeholder="Enter your userId..."
               style={{ marginBottom: '1rem' }}
             />
             <TextInput.ControlledPasswordInput
+              required
+              onChange={(e) => this.handlePasswordChange(e)}
               id="text-input-2"
               type={this.pwType}
               togglePasswordVisibility={() => this.togglePasswordVisibility()}
               labelText="Password"
               placeholder="Enter text..."
             />
-          </modalContent>
+          </>
             };
+
+  handleUserIDChange = (event) => {
+    this.setState({userId: event.target.value});
+  };
+  
+  handlePasswordChange = (event) => {
+    this.setState({password: event.target.value});
+  };
+  
+  handleModalSubmit = () => {
+    this.setState({open: false});
+    console.log(this.state.userId + ":" + this.state.password);
+    this.props.loginUser(this.state.userId, this.state.password);
+  }; 
 
   togglePasswordVisibility = () => {
     var newType = this.state.pwType === 'password' ? 'text' : 'password'
     this.setState({pwType: newType});
+  };
+
+  toggle_login_modal = () => {
+    var newState = !this.state.open;
+    this.setState({open: newState})
+    return
   };
 
   render_user_status = () => {
@@ -56,12 +84,6 @@ class CsafeHeader extends Component {
       } else {
         return "You are not logged in"
       }
-  };
-
-  toggle_login_modal = () => {
-    var newState = !this.state.open;
-    this.setState({open: newState})
-    return
   };
 
   render()  {
@@ -102,4 +124,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps, null)(CsafeHeader);
+export default connect(mapStateToProps, { loginUser })(CsafeHeader);

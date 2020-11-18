@@ -1,7 +1,8 @@
 import safe_api from '../apis/safe_api';
 import { 
     GET_SAFES,
-    REFRESH
+    REFRESH,
+    LOGIN
      } from './types';
 
 
@@ -48,7 +49,7 @@ export const getSafeList = () => {
 
 export const refreshToken = () => {
     return async (dispatch, getState) => {
-        console.log("In Refresh")
+        console.log("In Refresh");
         const user = getState().currentUser;
         safe_api.defaults.headers.common['Authorization'] = "Bearer " + user.refresh_token;
         const response = await safe_api.post('/refresh')
@@ -61,6 +62,27 @@ export const refreshToken = () => {
 };
 
 
-export const loginUser = () => {
-    
+export const loginUser = (user, pw) => {
+    return async (dispatch, getState) => {
+        await safe_api.post('/login', {
+            username: user,
+            password: pw
+        })
+            .then((response) => {
+                dispatch({
+                    type: LOGIN,
+                    payload: {
+                        userName: user,
+                        isLoggedin: true,
+                        ...response.data}
+                });
+            })
+            .catch((error) => {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                };
+            })
+    }
 }
