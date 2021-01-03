@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
     TileGroup,
-    SkeletonPlaceholder
+    SkeletonPlaceholder,
+    InlineNotification
   } from 'carbon-components-react';
 import SafeSummaryCard from '../SafeSummaryCard';
-import { getSafeList, refreshToken } from '../../actions';
-//import { Link } from 'react-router-dom';
-//import { fetchStreams } from '../../actions';
+import { getSafeList, refreshToken } from '../../actions/getSafeList';
 
 class SafeList extends Component  {
     componentDidMount() {
@@ -18,13 +17,26 @@ class SafeList extends Component  {
         return this.props.summary.map((safe) => {
             return (
                 <div key={safe.hardware_id} className="summary-card">
-                    <SafeSummaryCard  safe={safe}/>
-                </div>);
+                    <SafeSummaryCard safe={safe}/>
+                </div>
+                );
         });
     }
 
 
     render() {
+        console.log(this.props)
+        if (!this.props.currentUser.isLoggedIn) {
+            return (
+                <InlineNotification
+                    kind="error"
+                    title="You must be logged in to access this page"
+                    subtitle="Click on the user avatar icon at the top right"
+                />
+            );
+        }
+
+
         if (!this.props.summary) {
             return (
                 <SkeletonPlaceholder className="safelist--skeleton__placeholder--small" />
@@ -37,8 +49,8 @@ class SafeList extends Component  {
                 <TileGroup
                     legend="Click on a safe for more details"
                     name="tile-group"
+                    children={this.renderList()}
                     >
-                    {this.renderList()}
                 </TileGroup>
             </div>
         );

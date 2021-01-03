@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Breadcrumb,
   BreadcrumbItem,
-  Button,
   Tabs,
   Tab,
 } from 'carbon-components-react';
+//import history from '../../history';
 import { InfoSection, InfoCard } from '../../components/Info';
+//import RegisterUser from '../../components/RegisterUser';
 import Globe32 from '@carbon/icons-react/lib/globe/32';
 import PersonFavorite32 from '@carbon/icons-react/lib/person--favorite/32';
 import Application32 from '@carbon/icons-react/lib/application/32';
@@ -31,7 +33,7 @@ const LandingPage = () => {
         <div className="bx--col-lg-16">
           <Breadcrumb noTrailingSlash aria-label="Page navigation">
             <BreadcrumbItem>
-              <a href="/">Getting started</a>
+              <Link to="/">Getting started</Link>
             </BreadcrumbItem>
           </Breadcrumb>
           <h1 className="landing-page__heading">
@@ -59,7 +61,7 @@ const LandingPage = () => {
                       control of their safe to another CSAFE users (the keyholder).  Keyholders set the parameters
                       for their safeholders' safes.  The safe will only unlock according to those parameters.
                     </p>
-                    <Button>Register for CSAFE</Button>
+                    <Link to="/register">Register for CSAFE</Link>
                   </div>
                   <div className="bx--col-md-4 bx--offset-lg-1 bx--col-lg-8">
                     

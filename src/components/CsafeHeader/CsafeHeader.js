@@ -1,4 +1,4 @@
-import React, { Component }from 'react';
+import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import {
@@ -16,7 +16,8 @@ import {
 import { Link } from 'react-router-dom';
 import UserAvatar20 from '@carbon/icons-react/lib/user--avatar/20';
 import LoginModal from '../LoginModal/LoginModal';
-import { loginUser } from '../../actions';
+import Toast from '../../components/Toast';
+import { loginUser } from '../../actions/logUser';
 
 
 
@@ -63,7 +64,6 @@ class CsafeHeader extends Component {
   
   handleModalSubmit = () => {
     this.setState({open: false});
-    console.log(this.state.userId + ":" + this.state.password);
     this.props.loginUser(this.state.userId, this.state.password);
   }; 
 
@@ -87,6 +87,7 @@ class CsafeHeader extends Component {
   };
 
   render()  {
+    
     return (
       <React.Fragment>
         <Header aria-label="CSAFE Home">
@@ -114,6 +115,7 @@ class CsafeHeader extends Component {
           </HeaderGlobalBar>
         </Header>
         <LoginModal {...this.state}/>
+        <Toast className="toast__style"/>
       </React.Fragment>
   )}
 };
