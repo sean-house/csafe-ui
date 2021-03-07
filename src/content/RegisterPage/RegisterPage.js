@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { Form, TextInput, Button, Breadcrumb, BreadcrumbItem } from 'carbon-components-react';
 import history from '../../history';
+import SendRegistration from '../../components/AxiosComponents/SendRegistration';
 
 class RegisterPage extends Component {
     renderInput = ({input, 
@@ -31,7 +32,7 @@ class RegisterPage extends Component {
     }
 
     onSubmit = (formValues) => {
-      console.log(formValues);
+      //console.log(formValues);
       //this.props.onSubmit(formValues); 
       history.push('/')
     }
@@ -124,9 +125,10 @@ class RegisterPage extends Component {
                       </p> 
                       <p className="register-page__p register-page__c2">
                         We will never sell or give your email to a third party and will only email you with
-                        notifications related to you safes, or safeholder/keyholder relationships.
+                        notifications related to your safes, or safeholder/keyholder relationships.
                       </p> 
 
+                      <SendRegistration />
                     </div>
                   </div>
                 </div>

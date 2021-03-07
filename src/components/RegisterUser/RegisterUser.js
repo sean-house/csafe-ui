@@ -45,9 +45,6 @@ class RegisterUser extends Component {
       };
 
     renderInput = ({input, label, meta}) => {
-        console.log(input);
-        console.log(label);
-        console.log(meta);
         return (
             <div>
                 <TextInput
